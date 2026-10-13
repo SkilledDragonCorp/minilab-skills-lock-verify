@@ -58,6 +58,8 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
+        with:
+          version: "10.17.1"
 
       - name: Setup Node 24
         uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
@@ -85,4 +87,4 @@ jobs:
           chmod +x gitleaks
 
       - name: Gitleaks
-        run: ./gitleaks git --redact --verbose .
+        run: ./gitleaks git --redact --verbose --config .gitleaks.toml .

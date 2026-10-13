@@ -10,6 +10,9 @@ PIN="13e4063a1cf913f5606d57d42ab83a86f5001e04"
 
 export DISABLE_TELEMETRY="${DISABLE_TELEMETRY:-1}"
 export DO_NOT_TRACK="${DO_NOT_TRACK:-1}"
+# pnpm may refuse to mutate node_modules without a TTY unless CI=true.
+export CI="${CI:-true}"
+
 
 if [[ ! -d "$VENDOR/.git" ]]; then
   bash "$ROOT/scripts/vendor-upstream.sh"
@@ -23,6 +26,16 @@ fi
 
 cd "$VENDOR"
 
+# Prefer a modern git on PATH (upstream tests need GIT_CONFIG_GLOBAL, Git ≥ 2.31).
+if [[ -x /opt/homebrew/bin/git ]]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+elif [[ -x /usr/local/opt/git/bin/git ]]; then
+  export PATH="/usr/local/opt/git/bin:$PATH"
+fi
+
+GIT_VER="$(git --version | awk '{print $3}')"
+echo "using $(command -v git) ($GIT_VER)"
+
 # ci.yml L35
 pnpm install --frozen-lockfile
 # ci.yml L38
@@ -34,4 +47,4 @@ pnpm test
 # ci.yml L67 (typecheck job, Node 24)
 pnpm type-check
 
-echo "upstream-skills.sh OK (Node $(node -v), pnpm $(pnpm -v))"
+echo "upstream-skills.sh OK (Node $(node -v), pnpm $(pnpm -v), git $GIT_VER)"

@@ -1,0 +1,10 @@
+title = "minilab-skills-lock-verify"
+
+[extend]
+useDefault = true
+
+# Documented optional env name only — no secret values in this repo.
+[[allowlists]]
+description = "Placeholder optional token name in .env.example (no value)"
+paths = ['''^\.env\.example$''']
+regexes = ['''(?i)GITHUB_TOKEN''']
