@@ -1,0 +1,3 @@
+[test]
+# Keep discovery inside this lab — never pick up vendor/skills or node_modules suites.
+root = "./tests"

@@ -1,0 +1,65 @@
+# Secrets and local env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.crt
+*.cer
+*.pfx
+*.jks
+wallet.key
+.openclaw/
+credentials.json
+secrets/
+
+# Dependencies and build
+node_modules/
+.pnpm-store/
+.bun/
+dist/
+build/
+out/
+*.tsbuildinfo
+.next/
+.turbo/
+
+# Vendored upstream (script-cloned; pin asserted in scripts/vendor-upstream.sh)
+vendor/
+
+# Bun (keep bun.lock committed)
+bun.lockb
+
+# Caches and logs
+.cache/
+.tmp/
+tmp/
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Coverage and test artifacts
+coverage/
+.nyc_output/
+test-results/
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Forbidden skill mirrors (canonical path only)
+.agents/
+.cursor/skills/
+
+# Gitleaks local cache
+.gitleaks/
+tools/gitleaks
+
+# Disposable skills CLI verify workspace
+.throwaway-skills/

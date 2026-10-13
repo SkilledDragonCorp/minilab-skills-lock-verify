@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "verify-rules-before-deciding": {
+      "source": "./.claude/skills/verify-rules-before-deciding",
+      "sourceType": "local",
+      "computedHash": "e2479c7bb804c506122616d80f416b7552b3ee48b23400dafbc69d1c3e296af5"
+    }
+  }
+}
