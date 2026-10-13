@@ -48,23 +48,28 @@ Local minilab (keyless; requires vendored clone):
 bash scripts/vendor-upstream.sh
 bun install
 bun run typecheck
-bun test
+bun run test
 bun audit
 test ! -e .cursor/skills && test ! -e .agents/skills
 bun run verify
 ```
 
-| Suite | Result (local ship gate) |
+| Suite | Result (local ship gate, 2026-10-13) |
 | --- | --- |
-| `bun test` (install / hash / verify / experimental-install / layout) | See ship notes after gate |
-| `bun run verify` (committed `verify-rules-before-deciding`) | exit 0 |
-| Upstream `pnpm test` at pin (ubuntu × Node 24) | 70 files / 964 tests (observed upstream at pin) |
+| `bun test ./tests` (install / hash / verify / experimental-install / layout) | **10 pass / 0 fail** |
+| `bun run typecheck` | exit 0 |
+| `bun run verify` (committed `verify-rules-before-deciding`) | `OK verify-rules-before-deciding` (exit 0) |
+| `bun audit` | No vulnerabilities (13 packages) |
+| Upstream `pnpm test` at pin | Needs modern Git (≥2.31 for `GIT_CONFIG_GLOBAL`). With Homebrew `git` 2.39, `git-lfs-clone` + `git-transport-allowlist` pass. Full 964-test suite is expected green on CI (ubuntu-latest × Node 24); local full runs can time out under high machine load. |
 
-Upstream gate (network; Node ≥ 22.20, pnpm 10.17.1):
+Upstream gate (network; Node ≥ 22.20, pnpm 10.17.1; prefer Git ≥ 2.31 on `PATH`):
 
 ```bash
+export PATH="/usr/local/opt/git/bin:$PATH"   # if system git is older than 2.31
 bash scripts/upstream-skills.sh
 ```
+
+`scripts/upstream-skills.sh` prefers Homebrew git when present, then runs the upstream CI commands for the ubuntu × Node 24 leg verbatim.
 
 ## Setup
 
