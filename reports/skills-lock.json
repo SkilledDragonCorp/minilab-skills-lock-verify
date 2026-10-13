@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-10-13T23:43:21.343Z",
+  "lab": "minilab-skills-lock-verify",
+  "keyless": true,
+  "ok": true,
+  "elapsed_ms": 23239,
+  "elapsed_s": 23.2,
+  "bun": {
+    "version": "1.4.2",
+    "pass": 10,
+    "fail": 0,
+    "files_approx": 10
+  },
+  "verify": {
+    "ok": true,
+    "exit_code": 0,
+    "line": "OK verify-rules-before-deciding",
+    "elapsed_ms": 285
+  },
+  "upstream": {
+    "repo": "vercel-labs/skills",
+    "pin_sha": "13e4063a1cf913f5606d57d42ab83a86f5001e04",
+    "pin_short": "13e4063a",
+    "expected_pin": "13e4063a1cf913f5606d57d42ab83a86f5001e04",
+    "pin_match": true,
+    "npm": "skills@1.7.2",
+    "find_skills_expected_hash": "913b9d37d0d54047dd65222bb8c67b2bf04e3cb87dcad1729068d7a8b2c8c396",
+    "vendor_present": true
+  },
+  "steps": [
+    {
+      "id": "bun:test",
+      "command": "bun test ./tests",
+      "ok": true,
+      "exit_code": 0,
+      "elapsed_ms": 22954
+    },
+    {
+      "id": "verify",
+      "command": "bun run verify",
+      "ok": true,
+      "exit_code": 0,
+      "elapsed_ms": 285
+    }
+  ],
+  "headline": {
+    "bun_pass": 10,
+    "bun_fail": 0,
+    "verify_ok": true,
+    "pin_short": "13e4063a",
+    "find_skills_hash_prefix": "913b9d37d0d5"
+  }
+}

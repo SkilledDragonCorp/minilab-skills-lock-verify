@@ -14,6 +14,7 @@
   "scripts": {
     "test": "bun test ./tests",
     "verify": "bun bin/skill-lock-verify.ts",
+    "report": "bun run scripts/report.ts",
     "typecheck": "tsc --noEmit",
     "vendor": "bash scripts/vendor-upstream.sh",
     "audit": "bun audit",
